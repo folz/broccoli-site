@@ -19,6 +19,7 @@ var app = new EmberApp();
 
 // Bootstrap Sandstone
 app.import('vendor/bootstrap-sandstone-3.3.1+2.css');
+app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
 
 // Highlight.js
 app.import('bower_components/highlightjs/styles/monokai_sublime.css');

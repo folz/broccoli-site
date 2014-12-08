@@ -1,19 +1,46 @@
 $background-color: #f8f5f0;
 $border-color: #dfd7ca;
+$white: #fff;
 
 body {
-  margin: 30px 0;
+  background-color: $background-color;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 87px;
+  }
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.footer {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-/* Custom page header */
 .header {
+  background-color: $white;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
+  }
+
+  nav {
+    border-bottom: 1px solid $border-color;
+    transition: .1s padding-bottom ease-in-out;
+    width: 100%;
+
+    &.affix {
+      position: static;
+    }
+
+    /* Space out the masthead */
+    @media screen and (min-width: 768px) {
+      padding: 21px 0;
+
+      &.affix {
+        background-color: $white;
+        padding: 8px 0;
+        position: fixed;
+        width: 100%;
+      }
+    }
+  }
 }
 
 /* Customize container */
@@ -26,8 +53,8 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   border-bottom: 1px solid $border-color;
-  border-top: 1px solid $border-color;
   margin-bottom: 0;
+  padding: 38px 0;
   text-align: center;
 
   p.lead {
@@ -39,14 +66,16 @@ body {
   }
 
   .btn {
-    padding: 14px 24px;
     font-size: 21px;
+    margin: 28px 0 0;
+    padding: 14px 24px;
   }
 }
 
 /* Supporting marketing content */
 .marketing {
-  margin: 21px 0 48px;
+  background-color: $white;
+  padding: 21px 0 48px;
 
   .page-header {
     border: 0;
@@ -65,22 +94,9 @@ body {
 
 /* Custom page footer */
 .footer {
+  background-color: $white;
   padding-top: 19px;
   color: #777;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .footer {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
 }
 
 .highlight {

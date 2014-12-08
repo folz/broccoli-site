@@ -1,5 +1,5 @@
 <div class="header">
-    <nav role="navigation">
+    <nav role="navigation" data-spy="affix" data-offset-top="13">
         <div class="container">
             <ul class="nav nav-pills nav-justified">
                 <li role="presentation" class="active"><a href="#">Home</a></li>
@@ -14,17 +14,26 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>
-            <img src="logo-256.png" class="img-responsive" alt="Broccoli.js logo" title="Broccoli.js" />
-            <span class="sr-only">Broccoli.js</span>
-        </h1>
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>
+                    <img src="logo-256.png" class="img-responsive" alt="Broccoli.js logo" title="Broccoli.js" />
+                    <span class="sr-only">Broccoli.js</span>
+                </h1>
 
-        <p class="lead">Broccoli.js &ndash; The asset pipeline for ambitious applications.</p>
+                <p class="lead">Broccoli.js &ndash; The asset pipeline for ambitious applications.</p>
 
-        <div class="highlight one-liner">
+                <div class="highlight one-liner">
             <pre><code class="lang-sh">{{~ [0] ~}}
-$  npm install -g broccoli-cli
+                $  npm install -g broccoli-cli
               {{~ [0] ~}}</code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="#getting-started" class="btn btn-success">Get Started</a>
+            </div>
         </div>
     </div>
 </div>
@@ -79,7 +88,7 @@ module.exports = mergeTrees([styles, scripts]);
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Getting started</h2>
+                <h2 class="page-header">Getting started <a href="#getting-started" name="getting-started" class="small">#</a></h2>
                 <p>Getting started guide goes here.</p>
             </div>
         </div>
@@ -91,5 +100,3 @@ module.exports = mergeTrees([styles, scripts]);
         <p>&copy; Broccoli.js 2014</p>
     </div>
 </footer>
-
-</div> <!-- /container -->
