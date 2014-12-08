@@ -1,3 +1,95 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<div class="header">
+    <nav role="navigation">
+        <div class="container">
+            <ul class="nav nav-pills nav-justified">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Install</a></li>
+                <li role="presentation"><a href="#">Docs</a></li>
+                <li role="presentation"><a href="https://www.npmjs.org/browse/keyword/broccoli-plugin">Plugins</a></li>
+                <li role="presentation"><a href="https://github.com/broccolijs/broccoli">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
-{{outlet}}
+<div class="jumbotron">
+    <div class="container">
+        <h1>
+            <img src="logo-256.png" class="img-responsive" alt="Broccoli.js logo" title="Broccoli.js" />
+            <span class="sr-only">Broccoli.js</span>
+        </h1>
+
+        <p class="lead">Broccoli.js &ndash; The asset pipeline for ambitious applications.</p>
+
+        <div class="highlight one-liner">
+            <pre><code class="lang-sh">{{~ [0] ~}}
+$  npm install -g broccoli-cli
+              {{~ [0] ~}}</code></pre>
+        </div>
+    </div>
+</div>
+
+<div class="marketing">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="highlight">
+                    <pre><code class="lang-js">{{~ [0] ~}}
+/* Brocfile.js */
+
+var compileSass = require('broccoli-sass');
+var filterCoffeeScript = require('broccoli-coffee');
+var mergeTrees = require('broccoli-merge-trees');
+
+var sassDir = 'scss';
+var coffeeDir = 'coffeescript';
+
+var styles = compileSass([sassDir], 'app.scss', 'app.css');
+var scripts = filterCoffeeScript(coffeeDir);
+
+module.exports = mergeTrees([styles, scripts]);
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Blazing fast</h3>
+                        <p>Broccoli's incremental rebuild system gives you sub-second compile times even when you're working with hundreds of files.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>Less (code) is more</h3>
+                        <p>Broccoli's ecosystem of high-quality plugins means you only have to write a few lines of code for most common tasks.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Flexible</h3>
+                        <p>Use Broccoli by itself, or as part of a larger system like Grunt, Rails, ember-cli, or even <code>make</code>. Broccoli don't care, it just builds what it's told.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h3>It's Just Javascript</h3>
+                        <p>A <code>Brocfile</code> is just an ES6 module &ndash; use the Javascript you already know to specify how to build your assets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="docs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Getting started</h2>
+                <p>Getting started guide goes here.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; Broccoli.js 2014</p>
+    </div>
+</footer>
+
+</div> <!-- /container -->
