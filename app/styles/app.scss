@@ -75,7 +75,7 @@ body {
 /* Supporting marketing content */
 .marketing {
   background-color: $white;
-  padding: 21px 0 48px;
+  padding: 38px 0;
 
   .page-header {
     border: 0;
@@ -100,12 +100,9 @@ body {
 }
 
 .highlight {
-  margin: 48px 0 0;
-
   &.one-liner {
     float: left;
     left: 50%;
-    margin: 0;
     position: relative;
 
     pre {

@@ -3,7 +3,7 @@
         <div class="container">
             <ul class="nav nav-pills nav-justified">
                 <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Install</a></li>
+                <li role="presentation"><a href="#getting-started">Getting started</a></li>
                 <li role="presentation"><a href="#">Docs</a></li>
                 <li role="presentation"><a href="https://www.npmjs.org/browse/keyword/broccoli-plugin">Plugins</a></li>
                 <li role="presentation"><a href="https://github.com/broccolijs/broccoli">GitHub</a></li>
@@ -76,7 +76,7 @@ module.exports = mergeTrees([styles, scripts]);
                     </div>
                     <div class="col-sm-6">
                         <h3>It's Just Javascript</h3>
-                        <p>A <code>Brocfile</code> is just an ES6 module &ndash; use the Javascript you already know to specify how to build your assets.</p>
+                        <p>A <code>Brocfile.js</code> is just an ES6 module &ndash; use the Javascript you already know to specify how to build your assets.</p>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,102 @@ module.exports = mergeTrees([styles, scripts]);
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Getting started <a href="#getting-started" name="getting-started" class="small">#</a></h2>
-                <p>Getting started guide goes here.</p>
+                <h3>Prerequisites</h3>
+                <b>Node.js</b>
+                <p>If you don't currently have it installed, you'll need to get the latest stable version of node (v0.10.x). We recommend using <a href="https://github.com/creationix/nvm">NVM</a>. Test to make sure you have node and npm installed by running the following commands and checking that your output is similar:</p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+~ $  node --version
+v0.10.x
+~ $  npm --version
+1.4.x
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <b>Broccoli-cli</b>
+                <p>Once node and npm are installed, you'll need to install the Broccoli CLI globally with: </p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+~ $  npm install -g broccoli-cli
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>This will give you access to the <code>broccoli</code> command-line runner.</p>
+                <h3>Installation</h3>
+                <p>Inside your project directory root, install Broccoli:</p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+~ $  cd projects/my-project
+~/projects/my-project $  npm install --save-dev broccoli
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>Next create a <code>Brocfile.js</code> file.</p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+~/projects/my-project $  touch Brocfile.js
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>A <code>Brocfile.js</code> in the project root tells Broccoli how to build your project's assets. It can be as simple or as complicated as your project needs. For this example, we're going to keep it relatively simple and just build Sass into CSS and Coffeescript into Javascript. We're also going to assume your project structure looks like:</p>
+                    <pre><code class="lang-js">{{~ [0] ~}}
+my-project/
+├── app/
+│   ├── coffee/
+│   │   └── app.coffee
+│   └── scss/
+│       ├── _variables.scss
+│       └── app.scss
+└── Brocfile.js
+                      {{~ [0] ~}}</code></pre>
+                <p>In order to compile Sass and Coffeescript and merge them into one asset bundle, you'll first need to install the appropriate Broccoli plugins.</p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+~/projects/my-project $  npm install --save-dev broccoli-sass \
+    broccoli-coffee broccoli-merge-trees
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>Once those plugins install, edit <code>Brocfile.js</code> so it looks like this.</p>
+                <div class="highlight">
+                    <pre><code class="lang-js">{{~ [0] ~}}
+/* Brocfile.js */
+
+// Import some Broccoli plugins
+var compileSass = require('broccoli-sass');
+var filterCoffeeScript = require('broccoli-coffee');
+var mergeTrees = require('broccoli-merge-trees');
+
+// Specify the Sass and Coffeescript directories
+var sassDir = 'app/scss';
+var coffeeDir = 'app/coffeescript';
+
+// Tell Broccoli how we want the assets to be compiled
+var styles = compileSass([sassDir], 'app.scss', 'app.css');
+var scripts = filterCoffeeScript(coffeeDir);
+
+// Merge the compiled styles and scripts into one output directory.
+module.exports = mergeTrees([styles, scripts]);
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>Now build your assets with Broccoli.</p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+~/project/my-project $  broccoli build dist
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>If all goes well, you should see a new <code>dist</code> folder with a structure that looks something like this.</p>
+                <div class="highlight">
+                    <pre><code class="lang-sh">{{~ [0] ~}}
+my-project/
+├── app/
+│   ├── coffee/
+│   │   └── app.coffee
+│   └── scss/
+│       ├── _variables.scss
+│       └── app.scss
+├── dist/
+│   ├── app.css
+│   └── app.js
+└── Brocfile.js
+                      {{~ [0] ~}}</code></pre>
+                </div>
+                <p>Congratulations! You just built your first Broccoli project.</p>
             </div>
         </div>
     </div>
