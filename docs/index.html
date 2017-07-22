@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Broccoli.js - The asset pipeline for ambitious applications</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<meta name="broccoli-site/config/environment" content="%7B%22modulePrefix%22%3A%22broccoli-site%22%2C%22environment%22%3A%22development%22%2C%22rootURL%22%3A%22/%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22broccoli-site%22%2C%22version%22%3A%220.0.0+7348d000%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D" />
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/broccoli-site.css">
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-57483112-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    
+
+    <noscript>
+      <div class="header">
+        <nav role="navigation" data-spy="affix" data-offset-top="13">
+          <div class="container">
+            <ul class="nav nav-pills nav-justified">
+              <li role="presentation" class="active"><a href="#">Home</a></li>
+              <li role="presentation"><a href="#getting-started">Getting started</a></li>
+              <li role="presentation"><a href="https://github.com/broccolijs/broccoli">Docs</a></li>
+              <li role="presentation"><a href="http://broccoliplugins.com">Plugins</a></li>
+              <li role="presentation"><a href="https://github.com/broccolijs/broccoli">GitHub</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="jumbotron">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1>
+                <img src="logo-256.png" class="img-responsive" alt="Broccoli.js logo" title="Broccoli.js" />
+                <span class="sr-only">Broccoli.js</span>
+              </h1>
+
+              <p class="lead">Broccoli.js &ndash; The asset pipeline for ambitious applications.</p>
+
+              <div class="highlight one-liner">
+            <pre><code class="lang-sh">
+$  npm install -g broccoli-cli
+              </code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <a href="#getting-started" class="btn btn-success">Get Started</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="marketing">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="highlight">
+                    <pre><code class="lang-js">
+/* Brocfile.js */
+
+var compileSass = require('broccoli-sass');
+var filterCoffeeScript = require('broccoli-coffee');
+var mergeTrees = require('broccoli-merge-trees');
+
+var sassDir = 'scss';
+var coffeeDir = 'coffeescript';
+
+var styles = compileSass([sassDir], 'app.scss', 'app.css');
+var scripts = filterCoffeeScript(coffeeDir);
+
+module.exports = mergeTrees([styles, scripts]);
+                      </code></pre>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Blazing fast</h3>
+                  <p>Broccoli's incremental rebuild system gives you sub-second compile times even when you're working with hundreds of files.</p>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Less (code) is more</h3>
+                  <p>Broccoli's ecosystem of high-quality plugins means you only have to write a few lines of code for most common tasks.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Flexible</h3>
+                  <p>Use Broccoli by itself, or as part of a larger system like Grunt, Rails, ember-cli, or even <code>make</code>. Broccoli don't care, it just builds what it's told.</p>
+                </div>
+                <div class="col-sm-6">
+                  <h3>It's Just Javascript</h3>
+                  <p>A <code>Brocfile.js</code> is just an ES6 module &ndash; use the Javascript you already know to specify how to build your assets.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="docs">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2 class="page-header">Getting started <a href="#getting-started" name="getting-started" class="small">#</a></h2>
+              <h3>Prerequisites</h3>
+              <b>Node.js</b>
+              <p>If you don't currently have it installed, you'll need to get the latest stable version of node (v0.10.x). We recommend using <a href="https://github.com/creationix/nvm">NVM</a>. Test to make sure you have node and npm installed by running the following commands and checking that your output is similar:</p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+~ $  node --version
+v0.10.x
+~ $  npm --version
+1.4.x
+                      </code></pre>
+              </div>
+              <b>Broccoli-cli</b>
+              <p>Once node and npm are installed, you'll need to install the Broccoli CLI globally with: </p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+~ $  npm install -g broccoli-cli
+                      </code></pre>
+              </div>
+              <p>This will give you access to the <code>broccoli</code> command-line runner.</p>
+              <h3>Installation</h3>
+              <p>Inside your project directory root, install Broccoli:</p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+~ $  cd projects/my-project
+~/projects/my-project $  npm install --save-dev broccoli
+                      </code></pre>
+              </div>
+              <p>Next create a <code>Brocfile.js</code> file.</p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+~/projects/my-project $  touch Brocfile.js
+                      </code></pre>
+              </div>
+              <p>A <code>Brocfile.js</code> in the project root tells Broccoli how to build your project's assets. It can be as simple or as complicated as your project needs. For this example, we're going to keep it relatively simple and just build Sass into CSS and Coffeescript into Javascript. We're also going to assume your project structure looks like:</p>
+                    <pre><code class="lang-js">
+my-project/
+├── app/
+│   ├── coffee/
+│   │   └── app.coffee
+│   └── scss/
+│       ├── _variables.scss
+│       └── app.scss
+└── Brocfile.js
+                      </code></pre>
+              <p>In order to compile Sass and Coffeescript and merge them into one asset bundle, you'll first need to install the appropriate Broccoli plugins.</p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+~/projects/my-project $  npm install --save-dev broccoli-sass \
+    broccoli-coffee broccoli-merge-trees
+                      </code></pre>
+              </div>
+              <p>Once those plugins install, edit <code>Brocfile.js</code> so it looks like this.</p>
+              <div class="highlight">
+                    <pre><code class="lang-js">
+/* Brocfile.js */
+
+// Import some Broccoli plugins
+var compileSass = require('broccoli-sass');
+var filterCoffeeScript = require('broccoli-coffee');
+var mergeTrees = require('broccoli-merge-trees');
+
+// Specify the Sass and Coffeescript directories
+var sassDir = 'app/scss';
+var coffeeDir = 'app/coffee';
+
+// Tell Broccoli how we want the assets to be compiled
+var styles = compileSass([sassDir], 'app.scss', 'app.css');
+var scripts = filterCoffeeScript(coffeeDir);
+
+// Merge the compiled styles and scripts into one output directory.
+module.exports = mergeTrees([styles, scripts]);
+                      </code></pre>
+              </div>
+              <p>Now build your assets with Broccoli.</p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+~/project/my-project $  broccoli build dist
+                      </code></pre>
+              </div>
+              <p>If all goes well, you should see a new <code>dist</code> folder with a structure that looks something like this.</p>
+              <div class="highlight">
+                    <pre><code class="lang-sh">
+my-project/
+├── app/
+│   ├── coffee/
+│   │   └── app.coffee
+│   └── scss/
+│       ├── _variables.scss
+│       └── app.scss
+├── dist/
+│   ├── app.css
+│   └── app.js
+└── Brocfile.js
+                      </code></pre>
+              </div>
+              <p>Congratulations! You just built your first Broccoli project.</p>
+              <p>This was just the tip of the iceberg. To learn more about Broccoli, check out the <a href="https://github.com/broccolijs/broccoli">Broccoli Github repo</a> and the <a href="http://broccoliplugins.com">Broccoli plugin ecosystem</a>. More docs and examples coming soon!</p>
+              <a href="https://github.com/broccolijs/broccoli" class="btn btn-success">View on Github</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <p>&copy; Broccoli.js</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </noscript>
+
+    <script src="assets/vendor.js"></script>
+    <script src="assets/broccoli-site.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+body {
+  background-color: #f8f5f0;
+}
+@media screen and (min-width: 768px) {
+  body {
+    padding-top: 87px;
+  }
+}
+
+.header {
+  background-color: #fff;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    position: absolute;
+  }
+}
+.header nav {
+  border-bottom: 1px solid #dfd7ca;
+  transition: .1s padding-bottom ease-in-out;
+  width: 100%;
+  /* Space out the masthead */
+}
+.header nav.affix {
+  position: static;
+}
+@media screen and (min-width: 768px) {
+  .header nav {
+    padding: 21px 0;
+  }
+  .header nav.affix {
+    background-color: #fff;
+    padding: 8px 0;
+    position: fixed;
+    width: 100%;
+  }
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+/* Main marketing message and sign up button */
+.jumbotron {
+  border-bottom: 1px solid #dfd7ca;
+  margin-bottom: 0;
+  padding: 38px 0;
+  text-align: center;
+}
+.jumbotron p.lead {
+  margin: 30px 0;
+}
+.jumbotron img {
+  margin: 0 auto;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  margin: 28px 0 0;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  background-color: #fff;
+  padding: 38px 0;
+}
+.marketing .page-header {
+  border: 0;
+}
+
+.docs {
+  background-color: #f8f5f0;
+  border-bottom: 1px solid #dfd7ca;
+  border-top: 1px solid #dfd7ca;
+}
+.docs .container {
+  margin-bottom: 58px;
+}
+
+/* Custom page footer */
+.footer {
+  background-color: #fff;
+  padding: 19px 0;
+  color: #777;
+}
+
+.highlight.one-liner {
+  float: left;
+  left: 50%;
+  position: relative;
+}
+.highlight.one-liner pre {
+  float: left;
+  left: -50%;
+  position: relative;
+}
+.highlight code {
+  text-align: left;
+}
